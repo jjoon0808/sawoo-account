@@ -12,10 +12,7 @@ import {
   Download, 
   UploadCloud, 
   CheckCircle, 
-  ChevronDown, 
-  ChevronUp, 
   Info, 
-  HelpCircle, 
   Sparkles, 
   Check, 
   RotateCw, 
@@ -24,11 +21,6 @@ import {
 
 // D-Day target date: August 25, 2026, 17:00 KST
 const TARGET_DATE_KST = "2026-08-25T17:00:00+09:00";
-
-interface FAQItem {
-  question: string;
-  answer: string;
-}
 
 export default function App() {
   // 1. Timer State
@@ -94,44 +86,6 @@ export default function App() {
     });
   };
 
-  // 3. FAQ Accordion State
-  const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
-
-  const toggleFaq = (index: number) => {
-    setOpenFaqIndex((prev) => (prev === index ? null : index));
-  };
-
-  const faqs: FAQItem[] = [
-    {
-      question: "용량이 큰 드라이브 전체를 백업받으면 안 되나요?",
-      answer: "용량이 크면 구글 서버가 백업 파일을 구성하는 데 많은 시간이 소요(몇 시간 혹은 하루 이상)되며, 다운로드 중 연결이 끊어져 실패할 가능성도 큽니다. 그렇기 때문에 전체 백업보다는 국어, 수학, 영어, 사회 등 각 수업 시간에 직접 수행평가나 과제물로 만들었던 중요 구글 문서(Docs, Sheets, Slides) 위주로 선택하여 백업하는 방식을 강력히 추천합니다."
-    },
-    {
-      question: "가입할 때 쓰는 계정 아이디(ID)는 제 마음대로 지어도 되나요?",
-      answer: "네, 그렇습니다! 경기도교육청 구글 계정(@goedu.kr) 앞부분에 들어갈 ID는 여러분이 직접 원하는 영문이나 숫자, 영문숫자 조합 등을 활용하여 완전히 자유롭게 설정하고 등록할 수 있습니다."
-    },
-    {
-      question: "2단계 인증이나 다중 인증(MFA)을 꼭 설정해야 하나요?",
-      answer: "의무가 아닌 개인의 보안을 돕는 권장사항(선택)입니다. 다만 계정 도용이나 외부 해킹 공격을 효과적으로 방어하기 위해 가능하면 스마트폰 번호 등으로 연동을 걸어두는 것을 적극 추천해 드립니다."
-    },
-    {
-      question: "마감 일시(2026년 8월 25일 17:00) 이후에는 백업이 완전히 불가능한가요?",
-      answer: "네, 맞습니다. 최근 빈번해진 학교 대상 외부 해킹 공격 및 개인정보 도용 보안 리스크를 차단하기 위해 2026년 8월 25일 화요일 17:00 정각에 기존 학교 구글 계정(@sawoo.hs.kr)이 일괄적으로 영구 비활성화 처리됩니다. 마감 시간 이후에는 로그인 자체가 되지 않고 모든 원본 데이터가 영구 유실되어 복구할 수 없으므로 반드시 기한 내에 완료하셔야 합니다."
-    },
-    {
-      question: "백업받은 압축 파일(ZIP)의 압축을 푸니까 파일 이름이 다 깨져 보여요.",
-      answer: "구글 테이크아웃 백업 서버는 다국어 엔코딩 형식을 기본으로 파일을 구성하여 내려보냅니다. 윈도우 기본 탐색기 압축 해제 도구를 이용할 경우 한글 파일명이 글자 깨짐 현상으로 깨져 보일 수 있습니다. 이럴 때는 무료 압축 해제 소프트웨어인 '반디집(Bandizip)' 등을 사용해 해제해 주시면 한글 파일명이 온전하게 원상 복구됩니다."
-    },
-    {
-      question: "다운로드받은 백업 문서를 새 교육청 구글 계정 드라이브에 다시 올리면 바로 편집할 수 있나요?",
-      answer: "네, 가능합니다. 구글 문서가 로컬 PC용 확장자(.docx, .xlsx, .pptx 등)로 자동 변환되어 백업되므로, 새 @goedu.kr 드라이브에 업로드한 뒤 더블클릭하면 연동된 구글 온라인 편집기가 자동으로 연결되어 이전과 다름없이 문서를 이어 쓰고 수정할 수 있습니다."
-    },
-    {
-      question: "과정 중 가입 비밀번호를 잊어버렸거나 알 수 없는 오류가 발생하면 어디로 가나요?",
-      answer: "경기도교육청 클라우드 서비스 가입 비밀번호를 분실하신 경우 로그인 화면의 '비밀번호 재설정'을 활용해 해결하실 수 있습니다. 그럼에도 가입 진행 오류나 인증번호 미전송 등 막히는 사항이 계속 지속될 시에는 교무실의 '정보 담당 선생님' 혹은 각 학급 담임 선생님을 통해 편하게 도움을 요청해 주세요."
-    }
-  ];
-
   return (
     <div className="min-h-screen bg-[#FDFBF7] text-[#1E293B] selection:bg-amber-100 selection:text-amber-800 font-sans">
       {/* Upper Subtle Banner */}
@@ -149,7 +103,7 @@ export default function App() {
           className="inline-flex items-center gap-1.5 px-3 py-1 bg-amber-50 text-amber-700 text-xs font-semibold rounded-full border border-amber-200/60 mb-4"
         >
           <Sparkles className="w-3 h-3 animate-pulse text-amber-500" />
-          <span>보안 사고 예방 및 비활성화 대비 안전 보호 안내</span>
+          <span>기존 사우고 계정 정지 대비 안심 데이터 이전 안내</span>
         </motion.div>
 
         <motion.h1
@@ -170,8 +124,8 @@ export default function App() {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="mt-4 text-sm md:text-base text-slate-600 max-w-2xl mx-auto leading-relaxed"
         >
-          개인 계정 도용 및 외부 해킹 등 보안 취약점 사전 차단을 목적으로 기존 사우고 계정(@sawoo.hs.kr)이 전면 비활성화 조치됩니다. 
-          소중한 수행평가 및 학습 데이터를 분실하지 않도록 새 교육청 계정으로 수동 이전하는 공식 백업 가이드입니다.
+          기존에 사용하던 학교 계정(@sawoo.hs.kr) 정지에 맞추어, 수업 시간과 과제 수행에 작성했던 
+          소중한 구글 드라이브 문서들을 새 경기도교육청 구글 계정으로 안전하고 확실하게 옮기는 구체적인 이행 가이드입니다.
         </motion.p>
       </header>
 
@@ -381,29 +335,79 @@ export default function App() {
                 01
               </span>
               <h4 className="font-bold text-slate-900 tracking-tight">
-                경기도교육청 신규 계정(@goedu.kr) 생성 및 확인
+                [새 계정 준비] 경기도교육청 구글 계정(@goedu.kr) 생성 및 본인인증
               </h4>
             </div>
             <span className="text-[10px] md:text-xs text-slate-500 bg-slate-200/50 px-2 py-0.5 rounded-full font-medium">
-              신규 플랫폼 가입
+              1단계: 신규 계정 가입
             </span>
           </div>
 
-          <div className="p-6 space-y-4">
+          <div className="p-6 space-y-5">
             <p className="text-xs md:text-sm text-slate-600 leading-relaxed">
-              경기도 내 모든 재학생은 무료로 클라우드 연동 수업 계정(@goedu.kr)을 제공받습니다. 
-              에듀패스(EduPass) 포털 또는 경기도교육청 클라우드 서비스 공식 웹사이트에서 학생인증과 본인인증을 진행한 뒤, 
-              새롭게 발급된 본인의 Google 계정 정보를 확인하고 임시 로그인 테스트를 꼭 마쳐 주시기 바랍니다.
+              자료를 옮겨 담을 새 경기도교육청 Google 워크스페이스 계정(@goedu.kr)을 만드는 절차입니다. 
+              아래 세부 안내에 따라 웹사이트 접속 후 계정을 생성하고 임시 로그인까지 완료해 주세요.
             </p>
 
-            <div className="bg-stone-50/50 rounded-xl p-4 border border-stone-100 space-y-2">
-              <h5 className="text-xs font-semibold text-slate-800 flex items-center gap-1">
-                <Lock className="w-3.5 h-3.5 text-slate-500" />
-                <span>계정 확인 및 이용 안내:</span>
+            {/* Structured Step-by-Step Details */}
+            <div className="space-y-4">
+              <div className="flex gap-3">
+                <span className="w-5 h-5 bg-slate-100 text-slate-700 text-xs font-bold rounded-full flex items-center justify-center shrink-0 mt-0.5">
+                  1
+                </span>
+                <div className="text-xs md:text-sm text-slate-700 leading-relaxed">
+                  <span className="font-semibold text-slate-900">클라우드 서비스 가입 사이트 접속</span>
+                  <p className="text-xs text-slate-500 mt-0.5">
+                    하단의 <strong>'경기도교육청 클라우드 서비스'</strong> 또는 <strong>'교육부 에듀패스'</strong> 버튼을 클릭하여 공식 연동 포털에 접속합니다.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex gap-3">
+                <span className="w-5 h-5 bg-slate-100 text-slate-700 text-xs font-bold rounded-full flex items-center justify-center shrink-0 mt-0.5">
+                  2
+                </span>
+                <div className="text-xs md:text-sm text-slate-700 leading-relaxed">
+                  <span className="font-semibold text-slate-900">학생 인증 및 약관 동의 진행</span>
+                  <p className="text-xs text-slate-500 mt-0.5">
+                    회원가입 메뉴에서 <strong>'학생 가입'</strong> 단추를 선택하고, 안내 지침에 따라 학교 검색에서 '사우고등학교'를 찾아 등록합니다. 본인의 성명, 생년월일, 학생 식별번호(또는 나이스 학생인증번호)를 올바르게 기입한 뒤 본인 확인 절차를 진행합니다.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex gap-3">
+                <span className="w-5 h-5 bg-slate-100 text-slate-700 text-xs font-bold rounded-full flex items-center justify-center shrink-0 mt-0.5">
+                  3
+                </span>
+                <div className="text-xs md:text-sm text-slate-700 leading-relaxed">
+                  <span className="font-semibold text-slate-900">영문 아이디(ID) 자유 선택 및 비밀번호 지정</span>
+                  <p className="text-xs text-slate-500 mt-0.5">
+                    사용할 이메일 앞자리 아이디(ID)는 <strong>중복되지 않는 한 원하는 영문자나 숫자를 사용해 자유롭게 설정</strong>할 수 있습니다. 가입 완료 후 발급되는 계정은 <code className="bg-stone-100 text-slate-800 font-mono px-1 rounded">본인설정ID@goedu.kr</code> 형태가 됩니다. 자신이 로그인할 때 사용할 새 패스워드도 함께 정확히 지정합니다.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex gap-3">
+                <span className="w-5 h-5 bg-slate-100 text-slate-700 text-xs font-bold rounded-full flex items-center justify-center shrink-0 mt-0.5">
+                  4
+                </span>
+                <div className="text-xs md:text-sm text-slate-700 leading-relaxed">
+                  <span className="font-semibold text-slate-900">로그인 정상 동작 여부 최종 확인</span>
+                  <p className="text-xs text-slate-500 mt-0.5">
+                    계정 생성이 끝났다면 구글 메인화면(<a href="https://google.com" target="_blank" rel="noopener noreferrer" className="text-slate-800 underline">google.com</a>)에 접속하여 우측 상단 프로필을 누르고, 새로 만든 <code className="bg-stone-100 text-slate-800 font-mono px-1 rounded">@goedu.kr</code> 계정으로 로그인이 완벽히 이루어지는지 실제로 테스트해 봅니다.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-amber-50/50 rounded-xl p-4 border border-amber-200/50 space-y-2">
+              <h5 className="text-xs font-semibold text-amber-900 flex items-center gap-1">
+                <Lock className="w-3.5 h-3.5 text-amber-700" />
+                <span>중요 안전 유의사항:</span>
               </h5>
-              <ul className="text-xs text-slate-600 space-y-1 list-disc pl-4 leading-relaxed">
-                <li>새로 발급받는 경기도교육청 구글 계정(@goedu.kr)의 앞부분 아이디(ID)는 학생 본인이 원하는 영문이나 숫자 조합을 활용하여 완전히 자유롭게 설정하실 수 있습니다.</li>
-                <li>최초 로그인한 이후에는 본인의 안전한 자료 관리를 위해 비밀번호를 재설정해 주세요. 해킹 방지를 위한 2단계 인증(다중 인증, MFA) 기능은 필수가 아닌 권장사항이므로 필요 시에만 선택하여 간편하게 연결해 두면 안전합니다.</li>
+              <ul className="text-xs text-amber-800 space-y-1 list-disc pl-4 leading-relaxed">
+                <li>비밀번호는 나중에 잊어버려 파일 업로드가 막히지 않도록, 가입 즉시 다이어리나 휴대폰 메모장 등에 꼭 따로 기재해 두세요.</li>
+                <li>2단계 인증(MFA) 연동은 필수가 아니며 본인의 모바일 환경이나 개인 보안 강화를 희망할 때에만 필요 시 선택해서 등록하시면 충분합니다.</li>
               </ul>
             </div>
 
@@ -417,7 +421,7 @@ export default function App() {
               >
                 <div className="flex items-center gap-2">
                   <span className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></span>
-                  <span>경기도교육청 클라우드 서비스</span>
+                  <span>경기도교육청 클라우드 서비스 바로가기</span>
                 </div>
                 <div className="flex items-center gap-1 text-slate-400 group-hover:text-slate-800 transition-colors">
                   <span className="text-[10px] font-normal font-mono">goedu.kr</span>
@@ -433,7 +437,7 @@ export default function App() {
               >
                 <div className="flex items-center gap-2">
                   <span className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></span>
-                  <span>교육부 에듀패스(EduPass)</span>
+                  <span>교육부 에듀패스(EduPass) 포털 바로가기</span>
                 </div>
                 <div className="flex items-center gap-1 text-slate-400 group-hover:text-slate-800 transition-colors">
                   <span className="text-[10px] font-normal font-mono">edupass.kr</span>
@@ -458,69 +462,94 @@ export default function App() {
                 02
               </span>
               <h4 className="font-bold text-slate-900 tracking-tight">
-                Google Takeout 서비스 활용 데이터 일괄 백업
+                [데이터 백업] Google Takeout 서비스 활용 드라이브 자료 일괄 다운로드
               </h4>
             </div>
             <span className="text-[10px] md:text-xs text-amber-700 bg-amber-50 px-2 py-0.5 rounded-full font-medium">
-              가장 중요한 단계!
+              2단계: 기존 자료 내려받기
             </span>
           </div>
 
-          <div className="p-6 space-y-5">
+          <div className="p-6 space-y-6">
             <p className="text-xs md:text-sm text-slate-600 leading-relaxed">
-              기존 학교 계정(@sawoo.hs.kr)에 축적된 방대한 구글 드라이브 내용 중, 오직 필요한 수업 문서 및 자료만 다운로드하는 구글 공식 테이크아웃(백업) 서비스 사용법입니다. 아래 3단계를 그대로 따라 하세요!
+              기존 학교 계정(@sawoo.hs.kr) 구글 드라이브에 저장되어 있는 소중한 포트폴리오와 수업 과제 파일을 컴퓨터에 일괄 저장하는 가장 중요한 단계입니다. 아래 가이드라인을 하나씩 따라 진행해 주세요.
             </p>
 
-            {/* 3 Step Flow inside Step 2 */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <div className="p-4 bg-[#FDFBF7] rounded-xl border border-amber-100/40 relative">
-                <div className="text-[10px] text-amber-600 font-black font-mono mb-1">STAGE 01</div>
-                <h5 className="text-xs font-bold text-slate-900 mb-1.5 flex items-center gap-1">
-                  <span className="w-1.5 h-1.5 bg-amber-500 rounded-full inline-block"></span>
-                  <span>접속 및 로그인</span>
-                </h5>
-                <p className="text-[11px] md:text-xs text-slate-500 leading-normal">
-                  PC 크롬 브라우저에서 기존 사우고 학교 계정(@sawoo.hs.kr)으로 접속 상태를 확인한 후 테이크아웃 링크로 이동합니다.
-                </p>
+            {/* Detailed Click-by-Click Step-by-Step */}
+            <div className="space-y-4">
+              <div className="flex gap-3">
+                <span className="w-5 h-5 bg-slate-100 text-slate-700 text-xs font-bold rounded-full flex items-center justify-center shrink-0 mt-0.5">
+                  1
+                </span>
+                <div className="text-xs md:text-sm text-slate-700 leading-relaxed">
+                  <span className="font-semibold text-slate-900">구글 테이크아웃 페이지 접속 후 로그인 확인</span>
+                  <p className="text-xs text-slate-500 mt-0.5">
+                    크롬 브라우저에서 기존 사우고 학교 구글 계정(<code className="bg-stone-50 text-amber-800 font-mono text-[11px] px-1 rounded">@sawoo.hs.kr</code>)으로 정상 로그인된 상태를 먼저 확인합니다. 그 후 아래의 <strong>'Google 테이크아웃 사이트 바로가기'</strong> 단추를 클릭해 백업 페이지로 접속합니다.
+                  </p>
+                </div>
               </div>
 
-              <div className="p-4 bg-[#FDFBF7] rounded-xl border border-amber-100/40 relative">
-                <div className="text-[10px] text-amber-600 font-black font-mono mb-1">STAGE 02</div>
-                <h5 className="text-xs font-bold text-slate-900 mb-1.5 flex items-center gap-1">
-                  <span className="w-1.5 h-1.5 bg-amber-500 rounded-full inline-block"></span>
-                  <span>문서/드라이브 선택</span>
-                </h5>
-                <p className="text-[11px] md:text-xs text-slate-500 leading-normal">
-                  상단 <strong>'모두 선택 해제'</strong> 버튼을 누른 다음, 아래로 내려 <strong>'드라이브(Drive)'</strong> 항목만 골라 선택합니다.
-                </p>
+              <div className="flex gap-3">
+                <span className="w-5 h-5 bg-slate-100 text-slate-700 text-xs font-bold rounded-full flex items-center justify-center shrink-0 mt-0.5">
+                  2
+                </span>
+                <div className="text-xs md:text-sm text-slate-700 leading-relaxed">
+                  <span className="font-semibold text-slate-900">데이터 선택 설정 (불필요 항목 필수 해제)</span>
+                  <p className="text-xs text-slate-500 mt-0.5">
+                    페이지 상단의 <strong>'모두 선택 해제'</strong> 버튼을 클릭하여 모든 체크박스를 비웁니다. 그 후 아래로 스크롤하여 오직 <strong>'드라이브(Google Drive)'</strong> 항목만 찾아서 오른쪽 체크박스를 활성화합니다. (전체를 백업하면 압축 속도가 너무 느려집니다.)
+                  </p>
+                </div>
               </div>
 
-              <div className="p-4 bg-[#FDFBF7] rounded-xl border border-amber-100/40 relative">
-                <div className="text-[10px] text-amber-600 font-black font-mono mb-1">STAGE 03</div>
-                <h5 className="text-xs font-bold text-slate-900 mb-1.5 flex items-center gap-1">
-                  <span className="w-1.5 h-1.5 bg-amber-500 rounded-full inline-block"></span>
-                  <span>백업 파일 저장</span>
-                </h5>
-                <p className="text-[11px] md:text-xs text-slate-500 leading-normal">
-                  전송 방법에서 '이메일로 다운로드 링크 전송' 설정 후 생성 버튼을 누르면 다운로드 링크가 옵니다. ZIP 압축 파일로 PC에 저장하세요!
-                </p>
+              <div className="flex gap-3">
+                <span className="w-5 h-5 bg-slate-100 text-slate-700 text-xs font-bold rounded-full flex items-center justify-center shrink-0 mt-0.5">
+                  3
+                </span>
+                <div className="text-xs md:text-sm text-slate-700 leading-relaxed">
+                  <span className="font-semibold text-slate-900">빈도 및 파일 형식 지정하기</span>
+                  <p className="text-xs text-slate-500 mt-0.5">
+                    맨 아래로 내려가서 <strong>'다음 단계'</strong> 버튼을 누릅니다. 전송 방법은 <strong>'이메일로 다운로드 링크 전송'</strong>으로 그대로 두고, 파일 형식은 <strong>'ZIP'</strong>, 파일 크기는 <strong>'2GB'</strong> 혹은 <strong>'10GB'</strong> 중 컴퓨터 여유 상황에 맞춰 선택한 뒤 '내보내기 생성'을 클릭합니다.
+                  </p>
+                </div>
               </div>
+
+              <div className="flex gap-3">
+                <span className="w-5 h-5 bg-slate-100 text-slate-700 text-xs font-bold rounded-full flex items-center justify-center shrink-0 mt-0.5">
+                  4
+                </span>
+                <div className="text-xs md:text-sm text-slate-700 leading-relaxed">
+                  <span className="font-semibold text-slate-900">이메일 링크 확인 및 PC 다운로드</span>
+                  <p className="text-xs text-slate-500 mt-0.5">
+                    구글 서버가 백업 압축 작업을 완료하면(수 분 ~ 수 시간 소요), 기존 사우고 학교 지메일 계정으로 다운로드 준비 메일이 도착합니다. 메일 속 <strong>'파일 다운로드'</strong> 링크를 눌러 압축 파일(.zip)을 PC 하드디스크에 최종 다운로드합니다.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="p-4 bg-amber-50/50 rounded-xl border border-amber-200/50 space-y-2">
+              <h5 className="text-xs font-semibold text-amber-900 flex items-center gap-1">
+                <Info className="w-3.5 h-3.5 text-amber-700" />
+                <span>압축 해제 꿀팁 (한글 깨짐 현상 극복):</span>
+              </h5>
+              <p className="text-xs text-amber-800 leading-relaxed">
+                구글 테이크아웃에서 내려받은 ZIP 파일은 다국어 인코딩을 기본으로 하고 있어서, 윈도우 기본 압축 풀기 기능 사용 시 간혹 <strong>한글 파일 이름이 깨지는 증상</strong>이 생길 수 있습니다. 이럴 때는 무료 압축 해제 유틸리티인 <strong>'반디집(Bandizip)'</strong> 등을 설치해 압축을 해제하면, 한글 파일명이 원상 복구되어 한눈에 식별할 수 있습니다.
+              </p>
             </div>
 
             {/* Direct Link to Google Takeout */}
             <div className="pt-2">
               <a
-                href="https://support.google.com/accounts/answer/3024190?hl=ko"
+                href="https://takeout.google.com/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group relative w-full flex items-center justify-between p-4 bg-slate-900 hover:bg-slate-800 text-white rounded-xl text-xs md:text-sm font-semibold transition-all active:scale-[0.99] shadow-sm cursor-pointer"
               >
                 <div className="flex items-center gap-2">
                   <Download className="w-4.5 h-4.5 text-amber-400 shrink-0" />
-                  <span>Google 테이크아웃 안내 및 접속 (구글 공식 페이지)</span>
+                  <span>Google 테이크아웃 서비스 바로 접속하기</span>
                 </div>
                 <div className="flex items-center gap-1 text-slate-400 group-hover:text-white transition-colors">
-                  <span className="text-[10px] font-normal font-mono">Google Takeout</span>
+                  <span className="text-[10px] font-normal font-mono">takeout.google.com</span>
                   <ExternalLink className="w-4 h-4 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                 </div>
               </a>
@@ -586,81 +615,24 @@ export default function App() {
               </div>
             </div>
 
-            {/* Friendly Warning Alert Box */}
-            <div className="p-3.5 bg-slate-50 border border-slate-200 rounded-xl flex items-start gap-2.5">
-              <UploadCloud className="w-5 h-5 text-slate-600 shrink-0 mt-0.5" />
-              <p className="text-xs text-slate-600 leading-relaxed">
-                <strong>잠깐!</strong> 무선 인터넷(Wi-Fi) 감도가 불안정하거나 파일 양이 아주 많은 경우 업로드 시간이 길어질 수 있으니, 컴퓨터 전원 설정이 '자동 절전 모드'로 들어가 업로드가 멈추지 않도록 주의하세요.
-              </p>
-            </div>
+
           </div>
         </motion.div>
 
-        {/* Dynamic Section Division FAQ Title */}
-        <div className="pt-4 border-t border-slate-200/60">
-          <h3 className="text-slate-900 font-extrabold text-xl tracking-tight flex items-center gap-2">
-            <span className="w-1.5 h-6 bg-slate-800 rounded-full block"></span>
-            <span>자주 묻는 질문 (FAQ)</span>
-          </h3>
-        </div>
-
-        {/* FAQ Section (Accordion) */}
-        <motion.section 
-          initial={{ opacity: 0, y: 15 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          className="space-y-2.5"
-        >
-          {faqs.map((faq, index) => {
-            const isOpen = openFaqIndex === index;
-            return (
-              <div 
-                key={index} 
-                className="bg-white border border-stone-100 rounded-xl overflow-hidden transition-all duration-300 shadow-sm"
-              >
-                <button
-                  onClick={() => toggleFaq(index)}
-                  className="w-full px-5 py-4 text-left flex items-center justify-between gap-4 hover:bg-[#FDFBF7]/40 transition-colors focus:outline-none cursor-pointer"
-                >
-                  <div className="flex items-center gap-3">
-                    <HelpCircle className="w-5 h-5 text-slate-400 shrink-0" />
-                    <span className="text-xs md:text-sm font-bold text-slate-800 leading-tight">
-                      {faq.question}
-                    </span>
-                  </div>
-                  <div className="shrink-0 text-slate-400">
-                    {isOpen ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
-                  </div>
-                </button>
-
-                <AnimatePresence initial={false}>
-                  {isOpen && (
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.25, ease: "easeInOut" }}
-                    >
-                      <div className="px-5 pb-5 pt-1 text-xs md:text-sm text-slate-600 leading-relaxed border-t border-stone-50 bg-[#FDFBF7]/20">
-                        {faq.answer}
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
-            );
-          })}
-        </motion.section>
-
         {/* Contact Info Card */}
-        <div className="p-5 bg-slate-900 text-slate-100 rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-          <div className="space-y-1">
-            <span className="text-[10px] uppercase font-bold text-amber-400 tracking-wider">SUPPORT HELPDESK</span>
-            <h4 className="text-sm md:text-base font-extrabold text-white">기술 지원 및 로그인 관련 문의처</h4>
-            <p className="text-xs text-slate-300">비밀번호 찾기, 학생 번호 조회 등 기술적 도움이 필요할 때 찾아오세요.</p>
+        <div className="p-6 bg-slate-900 text-slate-100 rounded-2xl space-y-4 md:space-y-0 md:flex md:items-center md:justify-between md:gap-6">
+          <div className="space-y-1.5">
+            <span className="text-[10px] uppercase font-bold text-amber-400 tracking-wider">OFFICIAL HELPDESK</span>
+            <h4 className="text-sm md:text-base font-extrabold text-white">교육용 클라우드 지원시스템 문의처</h4>
+            <div className="text-xs text-slate-300 space-y-1">
+              <p>• ☎ 전화 상담: <strong>070-4916-0739</strong> (평일 09:00 ~ 18:00, 주말 및 공휴일 제외)</p>
+              <p>• ✉ 이메일 접수: <strong className="text-amber-200">goedu@foxsoft.kr</strong></p>
+            </div>
           </div>
-          <div className="text-xs font-semibold bg-slate-800 text-slate-100 border border-slate-700 px-4 py-2.5 rounded-xl shrink-0">
-            사우고등학교 본관 2층 교무실 &middot; 정보실
+          <div className="text-xs font-semibold bg-slate-800 text-slate-200 border border-slate-700/80 p-3.5 rounded-xl shrink-0 space-y-1 text-center sm:text-left">
+            <div className="text-white font-bold mb-1">경기도교육청 클라우드 서비스</div>
+            <div>• 가입 연동 신청 및 다중 인증 문의</div>
+            <div>• 공식 전문 기술 지원센터 연계 운영</div>
           </div>
         </div>
 
