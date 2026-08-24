@@ -1,0 +1,6 @@
+{
+  "name": "사우고 계정 백업 가이드",
+  "description": "사우고등학교 학생들을 위한 Google 계정 백업 및 경기도교육청 계정(@goedu.kr) 이전 안내 웹페이지",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
